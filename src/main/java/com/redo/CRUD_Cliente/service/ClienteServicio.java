@@ -5,6 +5,7 @@ import com.redo.CRUD_Cliente.repository.IClienteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,5 +30,9 @@ public class ClienteServicio implements IClienteServicio{
     @Override
     public Cliente obtenerCliente(Long id) {
         return repositorio.findById(id).orElse(null);
+    }
+    @Override
+    public List<Cliente> obtenerTodosLosClientes(){
+        return repositorio.findAll();
     }
 }
