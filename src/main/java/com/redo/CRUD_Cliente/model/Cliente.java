@@ -9,5 +9,7 @@ import lombok.NoArgsConstructor;
 public class Cliente {
     private Long id;
     private String nombre;
-    private String
+    private String apellido;
+    private String email;
+    private String direccion;
 }
