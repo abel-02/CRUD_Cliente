@@ -18,8 +18,8 @@ public class ClienteControlador {
         servicio.guardarCliente(cliente);
     }
     @GetMapping("/cliente/{id}")
-    public void solicitarCliente(@PathVariable Long id){
-        servicio.obtenerCliente(id);
+    public Cliente solicitarCliente(@PathVariable Long id){
+        return servicio.obtenerCliente(id);
     }
     @DeleteMapping("/cliente/{id}")
     public void eliminarCliente(@PathVariable Long id){
