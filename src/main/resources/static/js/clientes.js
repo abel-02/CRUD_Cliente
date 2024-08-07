@@ -6,8 +6,9 @@ async function cargarClientes() {
     const response = await fetch('http://localhost:8080/api/cliente/todos');
     const clientes = await response.json();
 
-    const tbody = document.querySelector('#clientes-table');
-    tbody.innerHTML = '';
+    const tbody = document.querySelector('#clientes-table tbody');
+    tbody.innerHTML = ''; // Asegúrate de que solo se borra el contenido del tbody
+
 
     clientes.forEach(cliente => {
         const tr = document.createElement('tr');
@@ -28,13 +29,14 @@ async function cargarClientes() {
 
 async function editarCliente(id) {
     const cliente = {
+        id: id,
         nombre: prompt("Nombre:"),
         apellido: prompt("Apellido:"),
         email: prompt("Email:"),
         direccion: prompt("Dirección:")
     };
 
-    await fetch(`http://localhost:8080/api/cliente/${id}`, {
+    await fetch(`http://localhost:8080/api/cliente`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
