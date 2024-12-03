@@ -1,12 +1,22 @@
 package com.redo.CRUD_Cliente.model;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-@Entity @Data @DiscriminatorValue("usuarios")
-@EqualsAndHashCode(callSuper = true)
-public class Usuario extends Persona{
+@Entity
+@Data
+@Table(name = "usuario")
+@AllArgsConstructor
+@NoArgsConstructor
+public class Usuario  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nombre;
+    private String apellido;
+    private String email;
+    private String direccion;
 
 }
