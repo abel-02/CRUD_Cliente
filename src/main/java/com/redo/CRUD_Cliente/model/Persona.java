@@ -1,9 +1,6 @@
 package com.redo.CRUD_Cliente.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +8,9 @@ import lombok.NoArgsConstructor;
 @Entity @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Persona {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "persona")
+public abstract class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -4,10 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
-@Entity @Data @NoArgsConstructor@AllArgsConstructor
-@Table(name = "clientes")
+@Entity @Data @AllArgsConstructor
+@DiscriminatorValue("clientes")
 @EqualsAndHashCode(callSuper = true)
 public class Cliente extends Persona{
 }
