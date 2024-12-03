@@ -13,13 +13,14 @@ import java.util.Optional;
 
 @Service
 public class UsuarioServicio implements IUsuarioServicio {
+    private static final String PALABRA_SECRETA = "masindescifrable";
     @Autowired
     private IUsuarioRepositorio repositorio;
 
     @Override
     public void guardarUsuario(Usuario usuario) {
         String hashPassword = Hashing.sha256()
-                .hashString(usuario.getPassword(), StandardCharsets.UTF_8)
+                .hashString(usuario.getPassword() + PALABRA_SECRETA, StandardCharsets.UTF_8)
                 .toString();
         usuario.setPassword(hashPassword);
         repositorio.save(usuario);
