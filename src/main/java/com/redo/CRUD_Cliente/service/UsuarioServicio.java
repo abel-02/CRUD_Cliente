@@ -1,11 +1,13 @@
 package com.redo.CRUD_Cliente.service;
 
 
+import com.google.common.hash.Hashing;
 import com.redo.CRUD_Cliente.model.Usuario;
 import com.redo.CRUD_Cliente.repository.IUsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +18,10 @@ public class UsuarioServicio implements IUsuarioServicio {
 
     @Override
     public void guardarUsuario(Usuario usuario) {
+        String hashPassword = Hashing.sha256()
+                .hashString(usuario.getPassword(), StandardCharsets.UTF_8)
+                .toString();
+        usuario.setPassword(hashPassword);
         repositorio.save(usuario);
     }
     @Override
