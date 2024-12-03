@@ -1,7 +1,7 @@
 package com.redo.CRUD_Cliente.controller;
 
 import com.redo.CRUD_Cliente.model.Usuario;
-import com.redo.CRUD_Usuario.service.UsuarioServicio;
+import com.redo.CRUD_Cliente.service.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
