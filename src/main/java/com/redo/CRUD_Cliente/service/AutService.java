@@ -3,6 +3,7 @@ package com.redo.CRUD_Cliente.service;
 import com.google.common.hash.Hashing;
 import com.redo.CRUD_Cliente.model.Usuario;
 import com.redo.CRUD_Cliente.repository.IUsuarioRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
@@ -12,6 +13,7 @@ import java.util.List;
 public class AutService implements IAutService{
 
     private static final String PALABRA_SECRETA = "masindescifrable";
+    @Autowired
     private IUsuarioRepositorio repositorio;
 
     @Override
