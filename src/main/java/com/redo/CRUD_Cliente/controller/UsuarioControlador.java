@@ -2,6 +2,7 @@ package com.redo.CRUD_Cliente.controller;
 
 import com.redo.CRUD_Cliente.model.Usuario;
 import com.redo.CRUD_Cliente.service.UsuarioServicio;
+import com.redo.CRUD_Cliente.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,9 @@ public class UsuarioControlador {
         servicio.modificarUsuario(usuario);
     }
     @GetMapping("/usuario/todos")
-    public List<Usuario> obtenerTodosLosUsuarios(){
+    public List<Usuario> obtenerTodosLosUsuarios(String token){
+        // Seguridad basica: Con estar logeado ya puede usar el endpoint, sino, da un Exception
+        JwtUtil.obtenerUsuarioPorToken(token);
         return servicio.obtenerTodosLosUsuarios();
     }
 }

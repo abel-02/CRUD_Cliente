@@ -13,7 +13,7 @@ import java.util.Date;
 public class JwtUtil {
 
     private static final String PALABRA_SECRETA = "masindescifrable";
-    private static Algorithm algorithm = Algorithm.HMAC256(PALABRA_SECRETA);
+    private final static Algorithm algorithm = Algorithm.HMAC256(PALABRA_SECRETA);
 
     public static String generarToken(Usuario usuario){
         String token = JWT.create()
@@ -30,7 +30,7 @@ public class JwtUtil {
         + (1000L * 60 * 60 *24 * 14));
     }
 
-    public String obtenerUsuarioPorToken(String token){
+    public static String obtenerUsuarioPorToken(String token){
         //Podemos poner fecha limite de sesion y en caso de pasarse, poner sesion expirada
         JWTVerifier verifier = JWT.require(algorithm)
                 .withIssuer("redo")
