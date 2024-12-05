@@ -3,6 +3,7 @@ package com.redo.CRUD_Cliente.controller;
 import com.redo.CRUD_Cliente.dto.RequestLogin;
 import com.redo.CRUD_Cliente.model.Usuario;
 import com.redo.CRUD_Cliente.service.AutService;
+import com.redo.CRUD_Cliente.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +17,12 @@ public class AutControlador {
     private AutService servicio;
 
     @PostMapping("/login")
-    public Usuario login(@RequestBody RequestLogin request){
-        Usuario usuarioAutenticado = servicio.login(request.getEmail(), request.getPassword());
-        return usuarioAutenticado;
+    public String login(@RequestBody RequestLogin request){
+        String emailIngresado = request.getEmail();
+        String passwordIngresada = request.getPassword();
+        Usuario usuarioAutenticado = servicio.login(emailIngresado, passwordIngresada);
+        String tokenDeSesion = JwtUtil.generarToken(usuarioAutenticado);
+
+        return tokenDeSesion;
     }
 }
