@@ -36,7 +36,7 @@ public class JwtUtil {
                 .withIssuer("redo")
                 .build();
         DecodedJWT decoded = verifier.verify(token);
-        String idUsuario = decoded.getClaim("userId").asString();
+        String idUsuario = decoded.getClaim("userId").toString();
         return idUsuario;
     }
 
